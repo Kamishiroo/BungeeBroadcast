@@ -9,7 +9,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class BroadcastCMD extends Command {
 
 	private static final String perm = "bungee.broadcast";
-	
+
 	public BroadcastCMD() {
 		super("an", null);
 	}
@@ -18,12 +18,13 @@ public class BroadcastCMD extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if(!p.hasPermission(perm)) {
+		if (!p.hasPermission(perm)) {
 			p.sendMessage(color("&cPermission> &7Sorry, but you have insufficient permissions."));
+			return;
 		}
 		if (args.length < 1) {
 			p.sendMessage(ChatColor.translateAlternateColorCodes('&',
-					"&cUsage> &7/ac <message>"));
+					"&cUsage> &7/an <message>"));
 			return;
 		} else {
 			for (ProxiedPlayer on : ProxyServer.getInstance().getPlayers()) {
